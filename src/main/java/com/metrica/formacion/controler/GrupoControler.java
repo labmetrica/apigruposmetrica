@@ -1,4 +1,4 @@
-package controler;
+package com.metrica.formacion.controler;
 
 import java.util.Date;
 import java.util.List;
@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import Entity.Grupo;
-import dao.GrupoService;
+import com.metrica.formacion.dao.GrupoService;
+import com.metrica.formacion.entity.Grupo;
 
 
 @CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
 @RestController
-@RequestMapping("Datos")
+@RequestMapping("/datos")
 public class GrupoControler {
 	
 	@Autowired

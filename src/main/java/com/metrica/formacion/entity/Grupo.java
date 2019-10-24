@@ -1,4 +1,4 @@
-package Entity;
+package com.metrica.formacion.entity;
 
 import java.util.Date;
 
@@ -11,8 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
-@Table(name= "Grupos de Comida")
+@Table(name= "Grupos_de_Comida")
 @Data
 public class Grupo {
 	@Id
@@ -23,7 +24,7 @@ public class Grupo {
 	@Column(name = "Nombre", nullable = false)
 	private Date nombre;
 	
-	@Column(name = "HuecosLibres")
+	@Column(name = "Huecos_Libres")
 	private int huecos;
 	
 	@Column(name = "Horario")

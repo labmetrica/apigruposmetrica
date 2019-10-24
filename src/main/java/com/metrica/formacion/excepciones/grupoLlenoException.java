@@ -1,6 +1,6 @@
-package Excepciones;
+package com.metrica.formacion.excepciones;
 
-import Entity.Grupo;
+import com.metrica.formacion.entity.Grupo;
 
 public class grupoLlenoException extends RuntimeException{
 	private Grupo lleno;	

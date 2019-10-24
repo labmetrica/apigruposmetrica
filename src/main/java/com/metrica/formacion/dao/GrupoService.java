@@ -1,13 +1,15 @@
-package dao;
+package com.metrica.formacion.dao;
+
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
 
-import Entity.Grupo;
-import Excepciones.grupoInexistenteException;
-import Excepciones.grupoLlenoException;
+import com.metrica.formacion.entity.Grupo;
+import com.metrica.formacion.excepciones.grupoInexistenteException;
+import com.metrica.formacion.excepciones.grupoLlenoException;
 
-
+@Service
 public class GrupoService implements GrupoInterface{
 	
 	private GrupoRepository repository;

@@ -1,8 +1,9 @@
-package dao;
+package com.metrica.formacion.dao;
 
 import java.util.Date;
 import java.util.List;
-import Entity.Grupo;
+
+import com.metrica.formacion.entity.Grupo;
 
 public interface GrupoInterface {
 	

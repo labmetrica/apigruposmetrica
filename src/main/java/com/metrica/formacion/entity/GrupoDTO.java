@@ -1,4 +1,4 @@
-package Entity;
+package com.metrica.formacion.entity;
 
 import java.util.Date;
 
