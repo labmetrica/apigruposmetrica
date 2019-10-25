@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.metrica.formacion.dao.GrupoService;
 import com.metrica.formacion.entity.Grupo;
+import com.metrica.formacion.service.GrupoService;
 
 
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST , RequestMethod.PUT})
 @RestController
 @RequestMapping("/datos")
 public class GrupoControler {
@@ -26,28 +26,23 @@ public class GrupoControler {
 	@Autowired
 	private GrupoService grupoService;
 
-
+	// ITS ALIIIIVE
 	@GetMapping("/grupo/{id}")
 	public Grupo getById(@PathVariable("id") final Long id) {
 		return grupoService.getById(id);
 	}
 	
 	@GetMapping("/grupo/nombre/{nombre}")
-	public Grupo getByNombre(@PathVariable("nombre") final String nombre) {
+	public Date getByNombre(@PathVariable("nombre") final Date nombre) {
 		return grupoService.getByNombre(nombre);
 	}
-	
-	@GetMapping("/grupo/hora/{horario}")
-	public Grupo getByHorario(@PathVariable("horario") final Date horario) {
-		return grupoService.getByHorario(horario);
-	}
-	
+	// ITS ALIIIIVE
 	@GetMapping("/grupos")
 	public List<Grupo> getAll() {
 		return grupoService.getAll();
 	}
-
-	@GetMapping("/grupos/libres/{horas}")
+	// ITS ALIIIIVE
+	@GetMapping("/grupos/libres")
 	public List<Grupo> getLibres() {
 		return grupoService.getLibres();
 	}
@@ -57,10 +52,25 @@ public class GrupoControler {
 		return grupoService.updateGrupo(id, actualizar);
 	}
 	
+	// ITS ALIIIIVE
 	@DeleteMapping("/grupo/{id}")
-	public boolean deleteGrupo(@PathVariable("id") final Long id) {
+	public boolean deleteGrupo(@PathVariable("id") final long id) {
 		return grupoService.deleteGrupo(id);
 	}
-
 	
+	
+	@GetMapping("/grupo/sacar/{id}")
+	public boolean sacarDeGrupo (@PathVariable("id") final long id) {
+		return grupoService.sacarDeGrupo(id);
+	}
+	
+	@GetMapping("/grupo/meter/{id}")
+	public boolean meterEnGrupo(@PathVariable("id") final long id) {
+		return grupoService.meterEnGrupo(id);
+	}
+	
+	@GetMapping("/grupo/mover/{idOriginal}-{idActualizar}")
+	public boolean moverDeGrupo(@PathVariable("idOriginal") final long idOriginal, @PathVariable("idActualizar") final long idActualizar) {
+		return grupoService.moverDeGrupo(idOriginal, idActualizar);
+	}
 }

@@ -27,6 +27,4 @@ public class Grupo {
 	@Column(name = "Huecos_Libres")
 	private int huecos;
 	
-	@Column(name = "Horario")
-	private Date horario;
 }

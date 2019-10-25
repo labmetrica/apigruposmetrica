@@ -1,4 +1,4 @@
-package com.metrica.formacion.dao;
+package com.metrica.formacion.service;
 
 import java.util.Date;
 import java.util.List;
@@ -7,13 +7,13 @@ import com.metrica.formacion.entity.Grupo;
 
 public interface GrupoInterface {
 	
+	// ITS ALIIIIVE
 	public List<Grupo> getAll();
 	
+	// ITS ALIIIIVE
 	public Grupo getById(long id);
 	
-	public Grupo getByNombre (String nombre);
-
-	public Grupo getByHorario (Date horario);
+	public Date getByNombre (Date nombre);
 
 	public boolean updateGrupo (long id, Grupo actualizar);
 	
@@ -21,10 +21,12 @@ public interface GrupoInterface {
 	
 	public boolean meterEnGrupo (long id);
 	
-	public boolean moverDeGrupo (long IDoriginal, Grupo actualizar);
+	public boolean moverDeGrupo (long idOriginal, long idActualizar);
 	
+	// ITS ALIIIIVE
 	public List<Grupo> getLibres ();
 	
+	// ITS ALIIIIVE
 	public boolean deleteGrupo (long id);
 	
 }
