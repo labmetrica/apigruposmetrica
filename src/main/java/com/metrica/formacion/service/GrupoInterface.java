@@ -1,6 +1,6 @@
 package com.metrica.formacion.service;
 
-import java.util.Date;
+import java.time.LocalTime;
 import java.util.List;
 
 import com.metrica.formacion.entity.Grupo;
@@ -11,7 +11,7 @@ public interface GrupoInterface {
 	
 	public Grupo getById(long id);
 	
-	public Grupo getByNombre (Date nombre);
+	public Grupo getByNombre (LocalTime nombre);
 	
 	public boolean newGrupo (Grupo actualizar);
 

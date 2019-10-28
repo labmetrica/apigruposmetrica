@@ -1,6 +1,6 @@
 package com.metrica.formacion.controler;
 
-import java.util.Date;
+import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class GrupoControler {
 	}
 	
 	@GetMapping("/grupo/nombre/{nombre}")
-	public Grupo getByNombre(@PathVariable("nombre") final Date nombre) {
+	public Grupo getByNombre(@PathVariable("nombre") final LocalTime nombre) {
 		return grupoService.getByNombre(nombre);
 	}
 

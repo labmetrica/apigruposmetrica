@@ -1,6 +1,7 @@
 package com.metrica.formacion.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import lombok.Data;
 
@@ -13,18 +14,25 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name= "Grupos_de_Comida")
+@Table(name= "grupos_de_comida")
 @Data
 public class Grupo {
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "IdGrupo")
-	private long  id ;	
+	private long id ;
 	
 	@Column(name = "Nombre", nullable = false)
-	private Date nombre;
+	private LocalTime nombre;
 	
 	@Column(name = "Huecos_Libres")
 	private int huecos;
-	
+
+    @Column(name = "createdAT")
+    private LocalDateTime createdAT;
+
+    @Column(name = "ultima_modificacion")
+    private LocalDateTime ultima_modificacion;
+
+    	
 }
