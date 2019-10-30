@@ -14,15 +14,15 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name= "grupos_de_comida")
+@Table(name= "grupos")
 @Data
 public class Grupo {
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "IdGrupo")
-	private long id ;
+    @Column(name = "ID")
+    private int id;
 	
-	@Column(name = "Nombre", nullable = false)
+	@Column(name = "nombre", nullable = false)
 	private LocalTime nombre;
 	
 	@Column(name = "Huecos_Libres")

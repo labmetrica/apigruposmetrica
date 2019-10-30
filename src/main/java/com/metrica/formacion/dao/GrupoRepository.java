@@ -14,27 +14,27 @@ import com.metrica.formacion.entity.Grupo;
 
 public interface GrupoRepository extends JpaRepository<Grupo, Object>  {
 	
-	@Query(value = "select * from grupos_de_comida where Huecos_Libres > 0", nativeQuery = true)
+	@Query(value = "select * from grupos where Huecos_Libres > 0", nativeQuery = true)
 	public List<Grupo> getHuecosLibres() ;
 			
-	@Query(value = "select * from grupos_de_comida where nombre <= ?1", nativeQuery = true)
+	@Query(value = "select * from grupos where nombre <= ?1", nativeQuery = true)
 	public Grupo findByNombre(LocalTime horario);
 
-	@Query(value = "select * from grupos_de_comida where id_grupo = ?1 and Huecos_Libres > 0 ", nativeQuery = true)
-	public Grupo comprobarGrupoExisteNoLleno(long id);
+	@Query(value = "select * from grupos where id = ?1 and Huecos_Libres > 0 ", nativeQuery = true)
+	public Grupo comprobarGrupoExisteNoLleno(int id);
 	
 	@Transactional
 	@Modifying
-	@Query(value = "update grupos_de_comida set Huecos_Libres = Huecos_Libres+1 where id_grupo = ?1", nativeQuery = true)
-	public int mas1Hueco(long id);
+	@Query(value = "update grupos set Huecos_Libres = Huecos_Libres+1 where id = ?1", nativeQuery = true)
+	public int mas1Hueco(int id);
 
 	@Transactional
 	@Modifying
-	@Query(value = "update grupos_de_comida set Huecos_Libres = Huecos_Libres-1 where id_grupo = ?1", nativeQuery = true)
-	public int menos1hueco(long id);
+	@Query(value = "update grupos set Huecos_Libres = Huecos_Libres-1 where id = ?1", nativeQuery = true)
+	public int menos1hueco(int id);
 	
 	@Transactional
 	@Modifying
-	@Query(value = "update grupos_de_comida set ultima_modificacion = ?1 where id_grupo = ?2", nativeQuery = true)
-	public int updateUltimaModificacion(LocalDateTime ahora, long id);
+	@Query(value = "update grupos set ultima_modificacion = ?1 where id = ?2", nativeQuery = true)
+	public int updateUltimaModificacion(LocalDateTime ahora, int id);
 }

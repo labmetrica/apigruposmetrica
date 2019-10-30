@@ -28,7 +28,7 @@ public class GrupoControler {
 	private GrupoService grupoService;
 
 	@GetMapping("/grupo/{id}")
-	public Grupo getById(@PathVariable("id") final Long id) {
+	public Grupo getById(@PathVariable("id") final int id) {
 		return grupoService.getById(id);
 	}
 	
@@ -48,7 +48,7 @@ public class GrupoControler {
 	}
 
 	@DeleteMapping("/grupo/{id}")
-	public boolean deleteGrupo(@PathVariable("id") final long id) {
+	public boolean deleteGrupo(@PathVariable("id") final int id) {
 		return grupoService.deleteGrupo(id);
 	}
 	
@@ -58,22 +58,22 @@ public class GrupoControler {
 	}
 	
 	@PutMapping("/grupo/actualizar/{id}")
-	public boolean updateGrupo(@PathVariable("id")final long id, final @RequestBody Grupo actualizar) {
+	public boolean updateGrupo(@PathVariable("id")final int id, final @RequestBody Grupo actualizar) {
 		return grupoService.updateGrupo(id, actualizar);
 	}
 		
 	@PutMapping("/grupo/sacar/{id}")
-	public boolean sacarDeGrupo(@PathVariable("id") final long id) {
+	public boolean sacarDeGrupo(@PathVariable("id") final int id) {
 		return grupoService.sacarDeGrupo(id);
 	}
 	
 	@PutMapping("/grupo/meter/{id}")
-	public boolean meterEnGrupo(@PathVariable("id") final long id) {
+	public boolean meterEnGrupo(@PathVariable("id") final int id) {
 		return grupoService.meterEnGrupo(id);
 	}
 	
 	@PutMapping("/grupo/mover/{idOriginal}-{idActualizar}")
-	public boolean moverDeGrupo(@PathVariable("idOriginal") final long idOriginal, @PathVariable("idActualizar") final long idActualizar) {
+	public boolean moverDeGrupo(@PathVariable("idOriginal") final int idOriginal, @PathVariable("idActualizar") final int idActualizar) {
 		return grupoService.moverDeGrupo(idOriginal, idActualizar);
 	}
 }

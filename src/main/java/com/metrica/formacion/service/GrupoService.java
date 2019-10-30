@@ -20,7 +20,7 @@ public class GrupoService implements GrupoInterface{
 	private static final Optional<Grupo> optionalVacio = Optional.empty();
 
 	
-	public Grupo getById(final long id) {
+	public Grupo getById(final int id) {
 		return repository.findById(id).orElse(new Grupo());
 	}
 
@@ -39,7 +39,7 @@ public class GrupoService implements GrupoInterface{
 	}
 
 	@Override
-	public boolean updateGrupo(long id, Grupo actualizar) {
+	public boolean updateGrupo(int id, Grupo actualizar) {
 		if (repository.findById(id) != optionalVacio ) {
 			actualizar.setId(id);
 			setUltimaModificacion(actualizar);
@@ -51,7 +51,7 @@ public class GrupoService implements GrupoInterface{
 	}
 
 	@Override
-	public boolean deleteGrupo(long id) {
+	public boolean deleteGrupo(int id) {
 		try {
 			repository.deleteById(id);
 			return true;
@@ -61,7 +61,7 @@ public class GrupoService implements GrupoInterface{
 	}
 
 	@Override
-	public boolean moverDeGrupo(long idOriginal, long idActualizar) {
+	public boolean moverDeGrupo(int idOriginal, int idActualizar) {
 		if (!sacarDeGrupo(idOriginal)) {
 			return false;
 		}
@@ -73,7 +73,7 @@ public class GrupoService implements GrupoInterface{
 	}
 	
 	@Override
-	public boolean sacarDeGrupo (long id) { 
+	public boolean sacarDeGrupo (int id) { 
 		if (repository.findById(id) != optionalVacio ){
 			repository.mas1Hueco(id);
 			setUltimaModificacion(id);
@@ -84,7 +84,7 @@ public class GrupoService implements GrupoInterface{
 	}
 	
 	@Override
-	public boolean meterEnGrupo (long id) {
+	public boolean meterEnGrupo (int id) {
 		if (repository.comprobarGrupoExisteNoLleno(id) != new Grupo()) {
 			repository.menos1hueco(id);
 			setUltimaModificacion(id);
@@ -119,7 +119,7 @@ public class GrupoService implements GrupoInterface{
 	 * Este metodo cambia en la base de datos el valor de la ultima modificacion del grupo al momento actual.
 	 * @param id Este es el id que se utiliza en la Base de datos para identificar el grupo  
 	 *  */
-	private void setUltimaModificacion(long id) {
+	private void setUltimaModificacion(int id) {
 		repository.updateUltimaModificacion(LocalDateTime.now(), id);
 	}
 	

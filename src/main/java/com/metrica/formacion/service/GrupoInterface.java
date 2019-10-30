@@ -9,22 +9,22 @@ public interface GrupoInterface {
 	
 	public List<Grupo> getAll();
 	
-	public Grupo getById(long id);
+	public Grupo getById(int id);
 	
 	public Grupo getByNombre (LocalTime nombre);
 	
 	public boolean newGrupo (Grupo actualizar);
 
-	public boolean updateGrupo (long id, Grupo actualizar);
+	public boolean updateGrupo (int id, Grupo actualizar);
 
-	public boolean sacarDeGrupo (long id); 
+	public boolean sacarDeGrupo (int id); 
 
-	public boolean meterEnGrupo (long id);
+	public boolean meterEnGrupo (int id);
 
-	public boolean moverDeGrupo (long idOriginal, long idActualizar);
+	public boolean moverDeGrupo (int idOriginal, int idActualizar);
 	
 	public List<Grupo> getLibres ();
 	
-	public boolean deleteGrupo (long id);
+	public boolean deleteGrupo (int id);
 	
 }
