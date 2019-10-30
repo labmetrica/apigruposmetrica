@@ -4,6 +4,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,8 +32,8 @@ public class GrupoControler {
 		return grupoService.getById(id);
 	}
 	
-	@GetMapping("/grupo/nombre/{nombre}")
-	public Grupo getByNombre(@PathVariable("nombre") final LocalTime nombre) {
+	@GetMapping("/grupo/nombre")
+	public Grupo getByNombre(@RequestBody @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) final LocalTime nombre) {
 		return grupoService.getByNombre(nombre);
 	}
 
@@ -76,3 +77,4 @@ public class GrupoControler {
 		return grupoService.moverDeGrupo(idOriginal, idActualizar);
 	}
 }
+
