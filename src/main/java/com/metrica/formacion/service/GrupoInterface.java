@@ -28,4 +28,6 @@ public interface GrupoInterface {
 
 	public boolean deleteGrupo(int id);
 
+	public boolean deleteAllGrupos();
+
 }

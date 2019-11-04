@@ -27,16 +27,20 @@ public class TestService {
 		assertFalse(metodos.moverDeGrupo(1, 3454));
 		assertFalse(metodos.moverDeGrupo(3454, 1));
 		assertNull(metodos.getById(3454));
-
 	}
-	
+
+	@Test
 	public void testIdExistentes() {
 		assertFalse(metodos.newGrupo(testGrupo));
-		assertFalse(metodos.deleteGrupo(3454));
-		assertFalse(metodos.moverDeGrupo(1, 3454));
-		assertFalse(metodos.moverDeGrupo(3454, 1));
-		assertNull(metodos.getById(3454));
+	}
 
+	@Test
+	public void testBorrados() {
+		metodos.deleteGrupo(1);
+		assertNull(metodos.getById(1));
+
+		metodos.deleteAllGrupos();
+		assertNull(metodos.getById(2));
 	}
 
 }

@@ -1,10 +1,13 @@
+C:\proyectos\ModeloDeDatos\src\main\java\com\metrica\formacion\dao\GrupoRepository.java
+C:\proyectos\ModeloDeDatos\src\main\java\com\metrica\formacion\ModeloDeDatosApplication.java
+C:\proyectos\ModeloDeDatos\src\main\java\com\metrica\formacion\service\GrupoInterface.java
+C:\proyectos\ModeloDeDatos\src\main\java\com\metrica\formacion\dao\converter\Converter.java
+C:\proyectos\ModeloDeDatos\src\main\java\com\metrica\formacion\controler\GrupoControler.java
+C:\proyectos\ModeloDeDatos\src\main\java\com\metrica\formacion\dao\converter\GrupoGrupoDTOConverter.java
+C:\proyectos\ModeloDeDatos\src\main\java\com\metrica\formacion\dao\converter\GrupoDTOGrupoConverter.java
 C:\proyectos\ModeloDeDatos\src\main\java\com\metrica\formacion\excepciones\grupoInexistenteException.java
 C:\proyectos\ModeloDeDatos\src\main\java\com\metrica\formacion\SpringConfigurationFile.java
-C:\proyectos\ModeloDeDatos\src\main\java\com\metrica\formacion\dao\GrupoRepository.java
 C:\proyectos\ModeloDeDatos\src\main\java\com\metrica\formacion\entity\Grupo.java
-C:\proyectos\ModeloDeDatos\src\main\java\com\metrica\formacion\ModeloDeDatosApplication.java
 C:\proyectos\ModeloDeDatos\src\main\java\com\metrica\formacion\service\GrupoService.java
 C:\proyectos\ModeloDeDatos\src\main\java\com\metrica\formacion\excepciones\grupoLlenoException.java
-C:\proyectos\ModeloDeDatos\src\main\java\com\metrica\formacion\service\GrupoInterface.java
-C:\proyectos\ModeloDeDatos\src\main\java\com\metrica\formacion\controler\GrupoControler.java
 C:\proyectos\ModeloDeDatos\src\main\java\com\metrica\formacion\entity\GrupoDTO.java

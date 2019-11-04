@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.metrica.formacion.dao.GrupoRepository;
-import com.metrica.formacion.dao.converter.GrupoDTOGrupoConverter;
 import com.metrica.formacion.dao.converter.GrupoGrupoDTOConverter;
 import com.metrica.formacion.entity.Grupo;
 import com.metrica.formacion.entity.GrupoDTO;
@@ -21,26 +20,25 @@ public class GrupoService implements GrupoInterface {
 	@Autowired
 	private static GrupoRepository repository;
 	private static final Optional<Grupo> optionalVacio = Optional.empty();
-	private GrupoGrupoDTOConverter GrupoToDTO;
-	private GrupoDTOGrupoConverter DTOtoGrupo;
+	private GrupoGrupoDTOConverter grupoToDTO;
 
 	public GrupoDTO getById(final int id) {
-		return GrupoToDTO.convert(repository.findById(id).orElse(new Grupo()));
+		return grupoToDTO.convert(repository.findById(id).orElse(new Grupo()));
 	}
 
 	@Override
 	public GrupoDTO getByNombre(Time nombre) {
-		return GrupoToDTO.convert(repository.findByNombre(nombre));
+		return grupoToDTO.convert(repository.findByNombre(nombre));
 	}
 
 	@Override
 	public List<GrupoDTO> getAll() {
-		return GrupoToDTO.convert(repository.findAll());
+		return grupoToDTO.convert(repository.findAll());
 	}
 
 	@Override
 	public List<GrupoDTO> getLibres() {
-		return GrupoToDTO.convert(repository.getHuecosLibres());
+		return grupoToDTO.convert(repository.getHuecosLibres());
 	}
 
 	@Override
@@ -59,6 +57,16 @@ public class GrupoService implements GrupoInterface {
 	public boolean deleteGrupo(int id) {
 		try {
 			repository.deleteById(id);
+			return true;
+		} catch (Exception E) {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean deleteAllGrupos() {
+		try {
+			repository.deleteAll();
 			return true;
 		} catch (Exception E) {
 			return false;

@@ -52,6 +52,11 @@ public class GrupoControler {
 	public boolean deleteGrupo(@PathVariable("id") final int id) {
 		return grupoService.deleteGrupo(id);
 	}
+	
+	@DeleteMapping()
+	public boolean deleteAllGrupos () {
+		return grupoService.deleteAllGrupos();
+	}
 
 	@PutMapping("/grupo/nuevo")
 	public boolean newGrupo(final @RequestBody Grupo actualizar) {
