@@ -1,7 +1,8 @@
 package com.metrica.formacion.service;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,7 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.metrica.formacion.dao.GrupoRepository;
+import com.metrica.formacion.dao.converter.GrupoDTOGrupoConverter;
+import com.metrica.formacion.dao.converter.GrupoGrupoDTOConverter;
 import com.metrica.formacion.entity.Grupo;
+import com.metrica.formacion.entity.GrupoDTO;
 
 
 @Service
@@ -18,24 +22,25 @@ public class GrupoService implements GrupoInterface{
 	@Autowired
 	private static GrupoRepository repository;
 	private static final Optional<Grupo> optionalVacio = Optional.empty();
+	private GrupoGrupoDTOConverter GrupoToDTO ;
+	private GrupoDTOGrupoConverter DTOtoGrupo ;
 
-	
-	public Grupo getById(final int id) {
-		return repository.findById(id).orElse(new Grupo());
+	public GrupoDTO getById(final int id) {
+		return GrupoToDTO.convert(repository.findById(id).orElse(new Grupo()));
 	}
 
 	@Override
-	public Grupo getByNombre(LocalTime nombre) {
-		return repository.findByNombre(nombre);
+	public GrupoDTO getByNombre(Time nombre) {
+		return GrupoToDTO.convert(repository.findByNombre(nombre));
 	}
 	@Override
-	public List<Grupo> getAll() {
-		return repository.findAll();
+	public List<GrupoDTO> getAll() {
+		return GrupoToDTO.convert(repository.findAll());
 	}
 
 	@Override
-	public List<Grupo> getLibres() {
-		return repository.getHuecosLibres();
+	public List<GrupoDTO> getLibres() {
+		return GrupoToDTO.convert(repository.getHuecosLibres());
 	}
 
 	@Override
@@ -98,7 +103,7 @@ public class GrupoService implements GrupoInterface{
 	public boolean newGrupo(Grupo nuevo) {
 		if (repository.findById(nuevo.getId()) != optionalVacio) {
 			setUltimaModificacion(nuevo);
-			nuevo.setCreatedAT(LocalDateTime.now());
+			nuevo.setCreatedAT(Timestamp.valueOf(LocalDateTime.now()));
 			repository.save(nuevo);
 			return true;			
 		}else{
@@ -111,7 +116,7 @@ public class GrupoService implements GrupoInterface{
 	 *  @param aCambiar objeto al que se le va a actualizar la variale ultima_modificacion 
 	 * */
 	private Grupo setUltimaModificacion(Grupo aCambiar) {
-		aCambiar.setUltima_modificacion(LocalDateTime.now());
+		aCambiar.setUltima_modificacion(Timestamp.valueOf(LocalDateTime.now()));
 		return aCambiar;
 	}
 	
@@ -120,7 +125,7 @@ public class GrupoService implements GrupoInterface{
 	 * @param id Este es el id que se utiliza en la Base de datos para identificar el grupo  
 	 *  */
 	private void setUltimaModificacion(int id) {
-		repository.updateUltimaModificacion(LocalDateTime.now(), id);
+		repository.updateUltimaModificacion(Timestamp.valueOf(LocalDateTime.now()), id);
 	}
 	
 }

@@ -1,17 +1,18 @@
 package com.metrica.formacion.service;
 
-import java.time.LocalTime;
+import java.sql.Time;
 import java.util.List;
 
 import com.metrica.formacion.entity.Grupo;
+import com.metrica.formacion.entity.GrupoDTO;
 
 public interface GrupoInterface {
 	
-	public List<Grupo> getAll();
+	public List<GrupoDTO> getAll();
 	
-	public Grupo getById(int id);
+	public GrupoDTO getById(int id);
 	
-	public Grupo getByNombre (LocalTime nombre);
+	public GrupoDTO getByNombre (Time nombre);
 	
 	public boolean newGrupo (Grupo actualizar);
 
@@ -23,7 +24,7 @@ public interface GrupoInterface {
 
 	public boolean moverDeGrupo (int idOriginal, int idActualizar);
 	
-	public List<Grupo> getLibres ();
+	public List<GrupoDTO> getLibres ();
 	
 	public boolean deleteGrupo (int id);
 	

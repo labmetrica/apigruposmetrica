@@ -1,6 +1,6 @@
 package com.metrica.formacion.controler;
 
-import java.time.LocalTime;
+import java.sql.Time;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.metrica.formacion.entity.Grupo;
+import com.metrica.formacion.entity.GrupoDTO;
 import com.metrica.formacion.service.GrupoService;
 
 
@@ -28,22 +29,22 @@ public class GrupoControler {
 	private GrupoService grupoService;
 
 	@GetMapping("/grupo/{id}")
-	public Grupo getById(@PathVariable("id") final int id) {
+	public GrupoDTO getById(@PathVariable("id") final int id) {
 		return grupoService.getById(id);
 	}
 	
 	@GetMapping("/grupo/nombre")
-	public Grupo getByNombre(@RequestBody @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) final LocalTime nombre) {
+	public GrupoDTO getByNombre(@RequestBody @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) final Time nombre) {
 		return grupoService.getByNombre(nombre);
 	}
 
 	@GetMapping("/grupos")
-	public List<Grupo> getAll() {
+	public List<GrupoDTO> getAll() {
 		return grupoService.getAll();
 	}
 
 	@GetMapping("/grupos/libres")
-	public List<Grupo> getLibres() {
+	public List<GrupoDTO> getLibres() {
 		return grupoService.getLibres();
 	}
 

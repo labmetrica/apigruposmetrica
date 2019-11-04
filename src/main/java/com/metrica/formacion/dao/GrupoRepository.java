@@ -1,7 +1,8 @@
 package com.metrica.formacion.dao;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.sql.Time;
+import java.sql.Timestamp;
+
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -18,7 +19,7 @@ public interface GrupoRepository extends JpaRepository<Grupo, Object>  {
 	public List<Grupo> getHuecosLibres() ;
 			
 	@Query(value = "select * from grupos where nombre <= ?1", nativeQuery = true)
-	public Grupo findByNombre(LocalTime horario);
+	public Grupo findByNombre(Time horario);
 
 	@Query(value = "select * from grupos where id = ?1 and Huecos_Libres > 0 ", nativeQuery = true)
 	public Grupo comprobarGrupoExisteNoLleno(int id);
@@ -36,5 +37,5 @@ public interface GrupoRepository extends JpaRepository<Grupo, Object>  {
 	@Transactional
 	@Modifying
 	@Query(value = "update grupos set ultima_modificacion = ?1 where id = ?2", nativeQuery = true)
-	public int updateUltimaModificacion(LocalDateTime ahora, int id);
+	public int updateUltimaModificacion(Timestamp ahora, int id);
 }
