@@ -3,6 +3,7 @@ package com.metrica.formacion.service;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,42 +11,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.metrica.formacion.dao.GrupoRepository;
-import com.metrica.formacion.dao.converter.GrupoGrupoDTOConverter;
 import com.metrica.formacion.entity.Grupo;
-import com.metrica.formacion.entity.GrupoDTO;
 
 @Service
 public class GrupoService implements GrupoInterface {
 
 	@Autowired
 	private static GrupoRepository repository;
-	private static final Optional<Grupo> optionalVacio = Optional.empty();
-	private GrupoGrupoDTOConverter grupoToDTO;
 
-	public GrupoDTO getById(final int id) {
-		return grupoToDTO.convert(repository.findById(id).orElse(new Grupo()));
+	public Grupo getById(final int id) {
+		return repository.findById(id).orElse(new Grupo());
 	}
 
 	@Override
-	public GrupoDTO getByNombre(Time nombre) {
-		return grupoToDTO.convert(repository.findByNombre(nombre));
+	public Grupo getByNombre(LocalTime nombre) {
+		return repository.findByNombre(nombre);
 	}
 
 	@Override
-	public List<GrupoDTO> getAll() {
-		return grupoToDTO.convert(repository.findAll());
-	}
-
-	@Override
-	public List<GrupoDTO> getLibres() {
-		return grupoToDTO.convert(repository.getHuecosLibres());
+	public List<Grupo> getAll() {
+		return repository.findAll();
 	}
 
 	@Override
 	public boolean updateGrupo(int id, Grupo actualizar) {
-		if (repository.findById(id) != optionalVacio) {
+		Grupo userBD = repository.findById(id).orElse(new Grupo());
+		if (userBD != new Grupo()) {
 			actualizar.setId(id);
-			setUltimaModificacion(actualizar);
+			actualizar.setUltima_modificacion();
 			repository.save(actualizar);
 			return true;
 		} else {
@@ -87,9 +80,11 @@ public class GrupoService implements GrupoInterface {
 
 	@Override
 	public boolean sacarDeGrupo(int id) {
-		if (repository.findById(id) != optionalVacio) {
-			repository.mas1Hueco(id);
-			setUltimaModificacion(id);
+		Grupo userBD = repository.findById(id).orElse(new Grupo());
+		if (userBD != new Grupo()) {
+			userBD.setHuecosMas1();
+			userBD.setUltima_modificacion();
+			repository.save(userBD);
 			return true;
 		} else {
 			return false;
@@ -98,9 +93,11 @@ public class GrupoService implements GrupoInterface {
 
 	@Override
 	public boolean meterEnGrupo(int id) {
-		if (repository.comprobarGrupoExisteNoLleno(id) != new Grupo()) {
-			repository.menos1hueco(id);
-			setUltimaModificacion(id);
+		Grupo userBD = repository.findById(id).orElse(new Grupo());
+		if (userBD != new Grupo()) {
+			userBD.setHuecosMenos1();
+			userBD.setUltima_modificacion();
+			repository.save(userBD);
 			return true;
 		} else {
 			return false;
@@ -109,37 +106,15 @@ public class GrupoService implements GrupoInterface {
 
 	@Override
 	public boolean newGrupo(Grupo nuevo) {
-		if (repository.findById(nuevo.getId()) != optionalVacio) {
-			setUltimaModificacion(nuevo);
-			nuevo.setCreatedAT(Timestamp.valueOf(LocalDateTime.now()));
+		Grupo userBD = repository.findById(nuevo.getId()).orElse(new Grupo());
+		if (userBD != new Grupo()) {
+			nuevo.setCreatedAT(LocalDateTime.now());;
+			nuevo.setUltima_modificacion();
 			repository.save(nuevo);
 			return true;
 		} else {
 			return false;
 		}
-	}
-
-	/**
-	 * Este metodo cambia en un objeto Grupo la ultima modificacion del grupo al
-	 * momento actual.
-	 * 
-	 * @param aCambiar objeto al que se le va a actualizar la variale
-	 *                 ultima_modificacion
-	 */
-	private Grupo setUltimaModificacion(Grupo aCambiar) {
-		aCambiar.setUltima_modificacion(Timestamp.valueOf(LocalDateTime.now()));
-		return aCambiar;
-	}
-
-	/**
-	 * Este metodo cambia en la base de datos el valor de la ultima modificacion del
-	 * grupo al momento actual.
-	 * 
-	 * @param id Este es el id que se utiliza en la Base de datos para identificar
-	 *           el grupo
-	 */
-	private void setUltimaModificacion(int id) {
-		repository.updateUltimaModificacion(Timestamp.valueOf(LocalDateTime.now()), id);
 	}
 
 }

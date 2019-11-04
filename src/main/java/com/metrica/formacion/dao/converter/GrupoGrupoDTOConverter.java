@@ -10,9 +10,9 @@ public class GrupoGrupoDTOConverter implements Converter<Grupo, GrupoDTO> {
 
 		convertido.setId(original.getId());
 		convertido.setHuecos(original.getHuecos());
-		convertido.setNombre(original.getNombre().toLocalTime());
-		convertido.setCreatedAT(original.getCreatedAT().toLocalDateTime());
-		convertido.setUltima_modificacion(original.getUltima_modificacion().toLocalDateTime());
+		convertido.setNombre(original.getNombre());
+		convertido.setCreatedAT(original.getCreatedAT());
+		convertido.setUltima_modificacion(original.getUltima_modificacion());
 		return convertido;
 	}
 

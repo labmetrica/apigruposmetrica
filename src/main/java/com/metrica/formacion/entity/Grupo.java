@@ -1,7 +1,7 @@
 package com.metrica.formacion.entity;
 
-import java.sql.Time;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,28 +14,26 @@ import javax.persistence.Table;
 @Table(name = "grupos")
 
 public class Grupo {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private int id;
 
 	@Column(name = "nombre", nullable = false)
-	private Time nombre;
+	private LocalTime nombre;
 
 	@Column(name = "Huecos_Libres")
 	private int huecos;
 
 	@Column(name = "createdAT")
-	private Timestamp createdAT;
+	private LocalDateTime createdAT;
 
 	@Column(name = "ultima_modificacion")
-	private Timestamp ultima_modificacion;
-
-	public Grupo(int id) {
-		this.id = id;
-	}
+	private LocalDateTime ultima_modificacion;
 
 	public Grupo() {
+		ultima_modificacion = LocalDateTime.now();
 	}
 
 	public int getId() {
@@ -46,35 +44,51 @@ public class Grupo {
 		this.id = id;
 	}
 
-	public Time getNombre() {
+	public LocalTime getNombre() {
 		return nombre;
 	}
 
-	public void setNombre(Time nombre) {
+	public void setNombre(LocalTime nombre) {
 		this.nombre = nombre;
 	}
 
 	public int getHuecos() {
 		return huecos;
 	}
-
+	
 	public void setHuecos(int huecos) {
 		this.huecos = huecos;
 	}
 
-	public Timestamp getCreatedAT() {
+	public void setHuecosMas1() {
+		if (huecos < 12) {
+			huecos++;
+		}
+	}
+
+	public void setHuecosMenos1() {
+		if (huecos > 0) {
+			huecos--;
+		}
+	}
+
+	public LocalDateTime getCreatedAT() {
 		return createdAT;
 	}
 
-	public void setCreatedAT(Timestamp createdAT) {
+	public void setCreatedAT(LocalDateTime createdAT) {
 		this.createdAT = createdAT;
 	}
 
-	public Timestamp getUltima_modificacion() {
+	public LocalDateTime getUltima_modificacion() {
 		return ultima_modificacion;
 	}
 
-	public void setUltima_modificacion(Timestamp ultima_modificacion) {
+	public void setUltima_modificacion() {
+		this.ultima_modificacion = LocalDateTime.now();
+	}
+
+	public void setUltima_modificacion(LocalDateTime ultima_modificacion) {
 		this.ultima_modificacion = ultima_modificacion;
 	}
 

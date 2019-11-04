@@ -4,11 +4,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import com.metrica.formacion.entity.Grupo;
 import com.metrica.formacion.service.GrupoService;
@@ -19,10 +17,12 @@ public class TestService {
 
 	@Autowired
 	private GrupoService metodos = new GrupoService();
-	private Grupo testGrupo = new Grupo(1);
+	private Grupo testGrupo = new Grupo();
+	
 
 	@Test
 	public void testIdInexistentes() {
+		testGrupo.setId(1);
 		assertFalse(metodos.updateGrupo(3454, testGrupo));
 		assertFalse(metodos.deleteGrupo(3454));
 		assertFalse(metodos.moverDeGrupo(1, 3454));
