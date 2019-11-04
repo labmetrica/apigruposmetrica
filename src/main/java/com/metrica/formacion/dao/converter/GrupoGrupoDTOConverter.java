@@ -5,7 +5,6 @@ import com.metrica.formacion.entity.GrupoDTO;
 
 public class GrupoGrupoDTOConverter implements Converter <Grupo, GrupoDTO> {
 
-	@Override
 	public GrupoDTO apply(Grupo original) {
 		GrupoDTO convertido = new GrupoDTO();
 		

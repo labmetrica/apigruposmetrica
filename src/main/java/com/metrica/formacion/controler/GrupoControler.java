@@ -1,7 +1,6 @@
 package com.metrica.formacion.controler;
 
 import java.sql.Time;
-import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;

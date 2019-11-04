@@ -2,8 +2,7 @@ package com.metrica.formacion.dao;
 
 import java.sql.Time;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+
 import java.util.List;
 
 import javax.transaction.Transactional;

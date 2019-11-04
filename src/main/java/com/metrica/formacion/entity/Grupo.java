@@ -1,10 +1,7 @@
 package com.metrica.formacion.entity;
 
 import java.sql.Time;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.sql.Timestamp;
-import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

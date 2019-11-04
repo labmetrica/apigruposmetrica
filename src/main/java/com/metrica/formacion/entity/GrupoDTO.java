@@ -3,8 +3,6 @@ package com.metrica.formacion.entity;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import lombok.Data;
-
 public class GrupoDTO {
 	private int  id ;	
 	private LocalTime nombre;

@@ -1,7 +1,6 @@
 package com.metrica.formacion.service;
 
 import java.sql.Time;
-import java.time.LocalTime;
 import java.util.List;
 
 import com.metrica.formacion.entity.Grupo;
