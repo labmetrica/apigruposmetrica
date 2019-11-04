@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -12,11 +13,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.metrica.formacion.entity.Grupo;
 import com.metrica.formacion.service.GrupoService;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringConfigurationFile.class)
 @DataJpaTest
 public class TestService {
 
+	@Autowired
 	private GrupoService metodos = new GrupoService();
 	private Grupo testGrupo = new Grupo(1);
 
