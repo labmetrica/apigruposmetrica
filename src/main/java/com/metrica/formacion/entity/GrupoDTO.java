@@ -4,12 +4,14 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class GrupoDTO {
-	private int  id ;	
+
+	private int  id ;
 	private LocalTime nombre;
 	private int huecos;
     private LocalDateTime createdAT;
     private LocalDateTime ultima_modificacion;
-	public int getId() {
+
+    public int getId() {
 		return id;
 	}
 	public void setId(int id) {

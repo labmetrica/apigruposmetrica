@@ -3,7 +3,7 @@ package com.metrica.formacion.service;
 import java.sql.Time;
 import java.util.List;
 
-import com.metrica.formacion.entity.Grupo;
+import com.metrica.formacion.entity.grupos;
 import com.metrica.formacion.entity.GrupoDTO;
 
 public interface GrupoInterface {
@@ -14,9 +14,9 @@ public interface GrupoInterface {
 	
 	public GrupoDTO getByNombre (Time nombre);
 	
-	public boolean newGrupo (Grupo actualizar);
+	public boolean newGrupo (grupos actualizar);
 
-	public boolean updateGrupo (int id, Grupo actualizar);
+	public boolean updateGrupo (int id, grupos actualizar);
 
 	public boolean sacarDeGrupo (int id); 
 

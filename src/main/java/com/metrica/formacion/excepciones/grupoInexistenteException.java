@@ -1,11 +1,11 @@
 package com.metrica.formacion.excepciones;
 
-import com.metrica.formacion.entity.Grupo;
+import com.metrica.formacion.entity.grupos;
 
 public class grupoInexistenteException extends RuntimeException{
-	private Grupo inexistente;	
+	private grupos inexistente;
 	
-	public grupoInexistenteException(Grupo falta){
+	public grupoInexistenteException(grupos falta){
 		this.inexistente = falta;
 	}
 }

@@ -3,19 +3,11 @@ package com.metrica.formacion.controler;
 import java.sql.Time;
 import java.util.List;
 
+import com.metrica.formacion.entity.grupos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.metrica.formacion.entity.Grupo;
 import com.metrica.formacion.entity.GrupoDTO;
 import com.metrica.formacion.service.GrupoService;
 
@@ -27,6 +19,8 @@ public class GrupoControler {
 	
 	@Autowired
 	private GrupoService grupoService;
+
+	/*GET*/
 
 	@GetMapping("/grupo/{id}")
 	public GrupoDTO getById(@PathVariable("id") final int id) {
@@ -48,18 +42,24 @@ public class GrupoControler {
 		return grupoService.getLibres();
 	}
 
+	/*Delete*/
+
 	@DeleteMapping("/grupo/{id}")
 	public boolean deleteGrupo(@PathVariable("id") final int id) {
 		return grupoService.deleteGrupo(id);
 	}
+
+	/*POST*/
 	
-	@PutMapping("/grupo/nuevo")
-	public boolean newGrupo(final @RequestBody Grupo actualizar) {
+	@PostMapping("/grupo/nuevo")
+	public boolean newGrupo(final @RequestBody grupos actualizar) {
 		return grupoService.newGrupo(actualizar) ;
 	}
+
+	/*PUT*/
 	
 	@PutMapping("/grupo/actualizar/{id}")
-	public boolean updateGrupo(@PathVariable("id")final int id, final @RequestBody Grupo actualizar) {
+	public boolean updateGrupo(@PathVariable("id")final int id, final @RequestBody grupos actualizar) {
 		return grupoService.updateGrupo(id, actualizar);
 	}
 		

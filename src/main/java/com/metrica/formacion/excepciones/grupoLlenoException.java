@@ -1,11 +1,11 @@
 package com.metrica.formacion.excepciones;
 
-import com.metrica.formacion.entity.Grupo;
+import com.metrica.formacion.entity.grupos;
 
 public class grupoLlenoException extends RuntimeException{
-	private Grupo lleno;	
+	private grupos lleno;
 	
-	public grupoLlenoException(Grupo lleno){
+	public grupoLlenoException(grupos lleno){
 		this.lleno = lleno;
 	}
 	
