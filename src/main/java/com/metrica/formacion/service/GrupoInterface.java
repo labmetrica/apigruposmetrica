@@ -7,25 +7,25 @@ import com.metrica.formacion.entity.Grupo;
 import com.metrica.formacion.entity.GrupoDTO;
 
 public interface GrupoInterface {
-	
+
 	public List<GrupoDTO> getAll();
-	
+
 	public GrupoDTO getById(int id);
-	
-	public GrupoDTO getByNombre (Time nombre);
-	
-	public boolean newGrupo (Grupo actualizar);
 
-	public boolean updateGrupo (int id, Grupo actualizar);
+	public GrupoDTO getByNombre(Time nombre);
 
-	public boolean sacarDeGrupo (int id); 
+	public boolean newGrupo(Grupo actualizar);
 
-	public boolean meterEnGrupo (int id);
+	public boolean updateGrupo(int id, Grupo actualizar);
 
-	public boolean moverDeGrupo (int idOriginal, int idActualizar);
-	
-	public List<GrupoDTO> getLibres ();
-	
-	public boolean deleteGrupo (int id);
-	
+	public boolean sacarDeGrupo(int id);
+
+	public boolean meterEnGrupo(int id);
+
+	public boolean moverDeGrupo(int idOriginal, int idActualizar);
+
+	public List<GrupoDTO> getLibres();
+
+	public boolean deleteGrupo(int id);
+
 }

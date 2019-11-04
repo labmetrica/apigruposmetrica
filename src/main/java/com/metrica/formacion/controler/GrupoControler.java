@@ -19,12 +19,12 @@ import com.metrica.formacion.entity.Grupo;
 import com.metrica.formacion.entity.GrupoDTO;
 import com.metrica.formacion.service.GrupoService;
 
-
-@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST , RequestMethod.PUT, RequestMethod.DELETE })
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+		RequestMethod.DELETE })
 @RestController
 @RequestMapping("/datos")
 public class GrupoControler {
-	
+
 	@Autowired
 	private GrupoService grupoService;
 
@@ -32,7 +32,7 @@ public class GrupoControler {
 	public GrupoDTO getById(@PathVariable("id") final int id) {
 		return grupoService.getById(id);
 	}
-	
+
 	@GetMapping("/grupo/nombre")
 	public GrupoDTO getByNombre(@RequestBody @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) final Time nombre) {
 		return grupoService.getByNombre(nombre);
@@ -52,30 +52,30 @@ public class GrupoControler {
 	public boolean deleteGrupo(@PathVariable("id") final int id) {
 		return grupoService.deleteGrupo(id);
 	}
-	
+
 	@PutMapping("/grupo/nuevo")
 	public boolean newGrupo(final @RequestBody Grupo actualizar) {
-		return grupoService.newGrupo(actualizar) ;
+		return grupoService.newGrupo(actualizar);
 	}
-	
+
 	@PutMapping("/grupo/actualizar/{id}")
-	public boolean updateGrupo(@PathVariable("id")final int id, final @RequestBody Grupo actualizar) {
+	public boolean updateGrupo(@PathVariable("id") final int id, final @RequestBody Grupo actualizar) {
 		return grupoService.updateGrupo(id, actualizar);
 	}
-		
+
 	@PutMapping("/grupo/sacar/{id}")
 	public boolean sacarDeGrupo(@PathVariable("id") final int id) {
 		return grupoService.sacarDeGrupo(id);
 	}
-	
+
 	@PutMapping("/grupo/meter/{id}")
 	public boolean meterEnGrupo(@PathVariable("id") final int id) {
 		return grupoService.meterEnGrupo(id);
 	}
-	
+
 	@PutMapping("/grupo/mover/{idOriginal}-{idActualizar}")
-	public boolean moverDeGrupo(@PathVariable("idOriginal") final int idOriginal, @PathVariable("idActualizar") final int idActualizar) {
+	public boolean moverDeGrupo(@PathVariable("idOriginal") final int idOriginal,
+			@PathVariable("idActualizar") final int idActualizar) {
 		return grupoService.moverDeGrupo(idOriginal, idActualizar);
 	}
 }
-

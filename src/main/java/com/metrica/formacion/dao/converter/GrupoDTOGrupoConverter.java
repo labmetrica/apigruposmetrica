@@ -6,12 +6,12 @@ import java.sql.Timestamp;
 import com.metrica.formacion.entity.Grupo;
 import com.metrica.formacion.entity.GrupoDTO;
 
-public class GrupoDTOGrupoConverter implements Converter <GrupoDTO, Grupo> {
+public class GrupoDTOGrupoConverter implements Converter<GrupoDTO, Grupo> {
 
 	@Override
 	public Grupo apply(GrupoDTO original) {
 		Grupo convertido = new Grupo();
-		
+
 		convertido.setId(original.getId());
 		convertido.setHuecos(original.getHuecos());
 		convertido.setNombre(Time.valueOf(original.getNombre()));
@@ -19,5 +19,5 @@ public class GrupoDTOGrupoConverter implements Converter <GrupoDTO, Grupo> {
 		convertido.setUltima_modificacion(Timestamp.valueOf(original.getUltima_modificacion()));
 		return convertido;
 	}
-	
+
 }
