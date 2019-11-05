@@ -25,7 +25,7 @@ import com.metrica.formacion.service.GrupoService;
 @RequestMapping("/datos")
 public class GrupoControler {
 
-	@Autowired
+	@Autowired(required=true)
 	private GrupoService grupoService;
 
 	@GetMapping("/grupo/{id}")
@@ -47,9 +47,9 @@ public class GrupoControler {
 	public boolean deleteGrupo(@PathVariable("id") final int id) {
 		return grupoService.deleteGrupo(id);
 	}
-	
+
 	@DeleteMapping("/grupos")
-	public boolean deleteAllGrupos () {
+	public boolean deleteAllGrupos() {
 		return grupoService.deleteAllGrupos();
 	}
 

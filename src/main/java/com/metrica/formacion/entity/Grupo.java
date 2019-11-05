@@ -55,7 +55,7 @@ public class Grupo {
 	public int getHuecos() {
 		return huecos;
 	}
-	
+
 	public void setHuecos(int huecos) {
 		this.huecos = huecos;
 	}
