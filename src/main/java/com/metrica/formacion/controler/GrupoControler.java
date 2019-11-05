@@ -21,26 +21,31 @@ public class GrupoControler {
 
 	/*GET*/
 
-	@GetMapping("/grupo/{id}")
+	@GetMapping("/grupo/id/{id}")
 	public grupos getById(@PathVariable("id") final int id) {
 		return grupoService.getById(id);
 	}
 	
-	@GetMapping("/grupo/nombre")
-	public grupos getByNombre(@RequestBody @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) final LocalTime nombre) {
+	@GetMapping("/grupo/nombre/{nombre}")
+	public grupos getByNombre(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) final LocalTime nombre) {
 		return grupoService.getByNombre(nombre);
 	}
 
-	@GetMapping("/grupos")
+	@GetMapping("/grupos/listar")
 	public List<grupos> getAll() {
 		return grupoService.getAll();
 	}
 
 	/*Delete*/
 
-	@DeleteMapping("/grupo/{id}")
+	@DeleteMapping("/grupo/borrar/{id}")
 	public void  deleteGrupo(@PathVariable("id") final int id) {
 		grupoService.borrarGrupo(id);
+	}
+	
+	@DeleteMapping("/grupos/borrarTodo")
+	public void deleteAllGrupos() {
+		grupoService.borrarTodosGrupos();
 	}
 
 	/*POST*/

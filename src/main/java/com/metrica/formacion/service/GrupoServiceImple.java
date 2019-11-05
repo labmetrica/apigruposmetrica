@@ -13,10 +13,10 @@ import com.metrica.formacion.entity.grupos;
 @Service
 public class GrupoServiceImple implements GrupoService {
 
-	@Autowired
+	@Autowired(required=true)
 	private GrupoRepository grupoRepository;
 
-
+	//Busquedas
 	@Override
 	public List<grupos> getAll() {
 		return grupoRepository.findAll();
@@ -24,20 +24,10 @@ public class GrupoServiceImple implements GrupoService {
 
 	@Override
 	public grupos getById(int id) {
-
-		if(grupoRepository.existsById(id)){
-
-			return grupoRepository.findById(id).get();
-		}
-
-		return null;
+		return grupoRepository.findById(id).orElse(null);
 	}
 
-	@Override
-	public grupos getByNombre(LocalTime localTime) {
-		return grupoRepository.findByNombre(localTime);
-	}
-
+	//Cambios en BDD
 	@Override
 	public grupos guardarGrupo(grupos grupo) {
 		return grupoRepository.save(grupo);
@@ -52,8 +42,24 @@ public class GrupoServiceImple implements GrupoService {
 	public void borrarGrupo(grupos grupo) {
 		grupoRepository.delete(grupo);
 	}
+	
+	public void borrarTodosGrupos() {
+		grupoRepository.deleteAll();
+	}
 
-	/*Busqueda por fechas*/
+
+	// BUSQUEDAS POR FECHAS
+	
+	
+	// Busqueda por nombre
+	
+	@Override
+	public grupos getByNombre(LocalTime localTime) {
+		return grupoRepository.findByNombre(localTime);
+	}
+
+	
+	// Busqueda por la creacion de la entrada
 
 	@Override
 	public List<grupos> buscarPorCreatedAT(LocalDate localDate) {
@@ -71,8 +77,8 @@ public class GrupoServiceImple implements GrupoService {
 		, date2.atTime(23,59,59));
 	}
 
-	//
 
+	// Busqueda por ultima modificacion
 
 	@Override
 	public List<grupos> buscarPorUltimaModificacion(LocalDate localDate) {
@@ -81,7 +87,7 @@ public class GrupoServiceImple implements GrupoService {
 
 	@Override
 	public List<grupos> buscarPorUltimaModificacionBefore(LocalDate localDate) {
-		return grupoRepository.findByUltimaModificacionBefore(localDate.atTime(23,59,95));
+		return grupoRepository.findByUltimaModificacionBefore(localDate.atTime(23,59,59));
 	}
 
 	@Override

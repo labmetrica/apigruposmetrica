@@ -3,24 +3,32 @@ package com.metrica.formacion.service;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+
 import com.metrica.formacion.entity.grupos;
 
 public interface GrupoService {
+	
+	//Busquedas
 	
 	List<grupos> getAll();
 	
 	grupos getById(int id);
 
-	grupos getByNombre(LocalTime localTime);
+	//Cambios en BDD 
 
-	grupos guardarGrupo(grupos grupo);
+	grupos guardarGrupo(grupos nuevo);
 
 	void borrarGrupo(int id);
 
 	void borrarGrupo(grupos grupo);
 
+	void borrarTodosGrupos();
 	/*BuscarPorFechas*/
 
+	//Nombre
+	
+	grupos getByNombre(LocalTime localTime);
+	
 	//Ultima Modificacion
 
 	List<grupos> buscarPorUltimaModificacion(LocalDate localDate);

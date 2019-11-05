@@ -28,7 +28,7 @@ public class grupos {
     private LocalDateTime ultimaModificacion;
 
     public grupos(){
-
+    	
 	}
 
 	public int getId() {
@@ -52,14 +52,12 @@ public class grupos {
 	}
 
 	public void setHuecosmas1() {
-
     	if(huecos < 12){
 			huecos ++;
 		}
 	}
 
 	public void setHuecosmenos1(){
-
     	if(huecos > 0){
     		huecos--;
     	}
@@ -82,4 +80,6 @@ public class grupos {
 	public void setUltimaModificacion() {
 		this.ultimaModificacion = LocalDateTime.now();
 	}
+
+
 }
