@@ -25,8 +25,6 @@ public class TestService {
 		testGrupo.setId(1);
 		assertFalse(metodos.updateGrupo(3454, testGrupo));
 		assertFalse(metodos.deleteGrupo(3454));
-		assertFalse(metodos.moverDeGrupo(1, 3454));
-		assertFalse(metodos.moverDeGrupo(3454, 1));
 		assertNull(metodos.getById(3454));
 	}
 
