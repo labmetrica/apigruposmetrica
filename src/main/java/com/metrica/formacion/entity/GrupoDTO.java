@@ -5,14 +5,14 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class GrupoDTO {
-	
+
 	private int id;
 	private LocalTime nombre;
 	private int huecos;
 	private LocalDateTime createdAT;
 	private LocalDateTime ultima_modificacion;
 	private ArrayList usuarios;
-	
+
 	public int getId() {
 		return id;
 	}

@@ -17,12 +17,6 @@ public interface GrupoInterface {
 
 	public boolean updateGrupo(int id, Grupo actualizar);
 
-	public boolean sacarDeGrupo(int id);
-
-	public boolean meterEnGrupo(int id);
-
-	public boolean moverDeGrupo(int idOriginal, int idActualizar);
-
 	public boolean deleteGrupo(int id);
 
 	public boolean deleteAllGrupos();

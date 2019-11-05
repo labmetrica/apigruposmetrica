@@ -63,19 +63,4 @@ public class GrupoControler {
 		return grupoService.updateGrupo(id, actualizar);
 	}
 
-	@PutMapping("/grupo/sacar/{id}")
-	public boolean sacarDeGrupo(@PathVariable("id") final int id) {
-		return grupoService.sacarDeGrupo(id);
-	}
-
-	@PutMapping("/grupo/meter/{id}")
-	public boolean meterEnGrupo(@PathVariable("id") final int id) {
-		return grupoService.meterEnGrupo(id);
-	}
-
-	@PutMapping("/grupo/mover/{idOriginal}-{idActualizar}")
-	public boolean moverDeGrupo(@PathVariable("idOriginal") final int idOriginal,
-			@PathVariable("idActualizar") final int idActualizar) {
-		return grupoService.moverDeGrupo(idOriginal, idActualizar);
-	}
 }

@@ -64,44 +64,6 @@ public class GrupoService implements GrupoInterface {
 	}
 
 	@Override
-	public boolean moverDeGrupo(int idOriginal, int idActualizar) {
-		if (!sacarDeGrupo(idOriginal)) {
-			return false;
-		}
-		if (!meterEnGrupo(idActualizar)) {
-			meterEnGrupo(idOriginal);
-			return false;
-		}
-		return true;
-	}
-
-	@Override
-	public boolean sacarDeGrupo(int id) {
-		Grupo userBD = grupoRepository.findById(id).orElse(new Grupo());
-		if (userBD != new Grupo()) {
-			userBD.setHuecosMas1();
-			userBD.setUltima_modificacion();
-			grupoRepository.save(userBD);
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	@Override
-	public boolean meterEnGrupo(int id) {
-		Grupo userBD = grupoRepository.findById(id).orElse(new Grupo());
-		if (userBD != new Grupo()) {
-			userBD.setHuecosMenos1();
-			userBD.setUltima_modificacion();
-			grupoRepository.save(userBD);
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	@Override
 	public boolean newGrupo(Grupo nuevo) {
 		Grupo userBD = grupoRepository.findById(nuevo.getId()).orElse(new Grupo());
 		if (userBD != new Grupo()) {
