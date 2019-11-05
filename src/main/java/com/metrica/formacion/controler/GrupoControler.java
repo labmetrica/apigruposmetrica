@@ -26,8 +26,8 @@ public class GrupoControler {
 		return grupoService.getById(id);
 	}
 	
-	@GetMapping("/grupo/nombre")
-	public grupos getByNombre(@RequestBody @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) final LocalTime nombre) {
+	@GetMapping("/grupo/nombre/{nombre}")
+	public grupos getByNombre(@PathVariable("nombre") @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) final LocalTime nombre) {
 		return grupoService.getByNombre(nombre);
 	}
 
