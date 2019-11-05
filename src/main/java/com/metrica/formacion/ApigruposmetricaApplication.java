@@ -6,10 +6,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class ModeloDeDatosApplication {
+public class ApigruposmetricaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ModeloDeDatosApplication.class, args);
+		SpringApplication.run(ApigruposmetricaApplication.class, args);
 	}
 
 }

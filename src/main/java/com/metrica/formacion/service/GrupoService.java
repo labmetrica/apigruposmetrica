@@ -1,131 +1,92 @@
 package com.metrica.formacion.service;
 
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.metrica.formacion.dao.GrupoRepository;
-import com.metrica.formacion.dao.converter.GrupoDTOGrupoConverter;
-import com.metrica.formacion.dao.converter.GrupoGrupoDTOConverter;
 import com.metrica.formacion.entity.grupos;
-import com.metrica.formacion.entity.GrupoDTO;
 
 
 @Service
-public class GrupoService implements GrupoInterface{
-	
+public class GrupoService implements GrupoInterface {
+
 	@Autowired
-	private static GrupoRepository repository;
-	private static final Optional<grupos> optionalVacio = Optional.empty();
-	private GrupoGrupoDTOConverter GrupoToDTO ;
-	private GrupoDTOGrupoConverter DTOtoGrupo ;
+	private GrupoRepository grupoRepository;
 
-	public GrupoDTO getById(final int id) {
-		return GrupoToDTO.convert(repository.findById(id).orElse(new grupos()));
+
+	@Override
+	public List<grupos> getAll() {
+		return grupoRepository.findAll();
 	}
 
 	@Override
-	public GrupoDTO getByNombre(Time nombre) {
-		return GrupoToDTO.convert(repository.findByNombre(nombre));
-	}
-	@Override
-	public List<GrupoDTO> getAll() {
-		return GrupoToDTO.convert(repository.findAll());
-	}
+	public grupos getById(int id) {
 
-	@Override
-	public List<GrupoDTO> getLibres() {
-		return GrupoToDTO.convert(repository.getHuecosLibres());
-	}
+		if(grupoRepository.existsById(id)){
 
-	@Override
-	public boolean updateGrupo(int id, grupos actualizar) {
-		if (repository.findById(id) != optionalVacio ) {
-			actualizar.setId(id);
-			setUltimaModificacion(actualizar);
-			repository.save(actualizar);
-			return true;
-		}else {
-			return false;
+			return grupoRepository.findById(id).get();
 		}
+
+		return null;
 	}
 
 	@Override
-	public boolean deleteGrupo(int id) {
-		try {
-			repository.deleteById(id);
-			return true;
-		} catch (Exception E) {
-			return false;
-		}
+	public grupos getByNombre(LocalTime localTime) {
+		return grupoRepository.findByNombre(localTime);
 	}
 
 	@Override
-	public boolean moverDeGrupo(int idOriginal, int idActualizar) {
-		if (!sacarDeGrupo(idOriginal)) {
-			return false;
-		}
-		if (!meterEnGrupo(idActualizar)) {
-			meterEnGrupo(idOriginal);
-			return false;
-		}		
-		return true;
-	}
-	
-	@Override
-	public boolean sacarDeGrupo (int id) { 
-		if (repository.findById(id) != optionalVacio ){
-			repository.mas1Hueco(id);
-			setUltimaModificacion(id);
-			return true;
-		}else {
-			return false;
-		}
-	}
-	
-	@Override
-	public boolean meterEnGrupo (int id) {
-		if (repository.comprobarGrupoExisteNoLleno(id) != new grupos()) {
-			repository.menos1hueco(id);
-			setUltimaModificacion(id);
-			return true;
-		}else {
-			return false;
-		}	
+	public grupos guardarGrupo(grupos grupo) {
+		return grupoRepository.save(grupo);
 	}
 
 	@Override
-	public boolean newGrupo(grupos nuevo) {
-		if (repository.findById(nuevo.getId()) != optionalVacio) {
-			setUltimaModificacion(nuevo);
-			nuevo.setCreatedAT(Timestamp.valueOf(LocalDateTime.now()));
-			repository.save(nuevo);
-			return true;			
-		}else{
-			return false;
-		}
+	public void borrarGrupo(int id) {
+		grupoRepository.deleteById(id);
 	}
-	
-	/**
-	 * Este metodo cambia en un objeto grupos la ultima modificacion del grupo al momento actual.
-	 *  @param aCambiar objeto al que se le va a actualizar la variale ultima_modificacion 
-	 * */
-	private grupos setUltimaModificacion(grupos aCambiar) {
-		aCambiar.setUltima_modificacion(Timestamp.valueOf(LocalDateTime.now()));
-		return aCambiar;
+
+	@Override
+	public void borrarGrupo(grupos grupo) {
+		grupoRepository.delete(grupo);
 	}
-	
-	/**
-	 * Este metodo cambia en la base de datos el valor de la ultima modificacion del grupo al momento actual.
-	 * @param id Este es el id que se utiliza en la Base de datos para identificar el grupo  
-	 *  */
-	private void setUltimaModificacion(int id) {
-		repository.updateUltimaModificacion(Timestamp.valueOf(LocalDateTime.now()), id);
+
+	/*Busqueda por fechas*/
+
+	@Override
+	public List<grupos> buscarPorCreatedAT(LocalDate localDate) {
+		return grupoRepository.findByCreatedAT(localDate.toString());
 	}
-	
+
+	@Override
+	public List<grupos> buscarPorCreatedATBefore(LocalDate localDate) {
+		return grupoRepository.findByCreatedATBefore(localDate.atTime(23,59,59));
+	}
+
+	@Override
+	public List<grupos> buscarPorCreatedATBeetwen(LocalDate date1, LocalDate date2) {
+		return grupoRepository.findByCreatedATBetween(date1.atTime(23,59,59)
+		, date2.atTime(23,59,59));
+	}
+
+	//
+
+
+	@Override
+	public List<grupos> buscarPorUltimaModificacion(LocalDate localDate) {
+		return grupoRepository.findByUltimaModificacion(localDate.toString());
+	}
+
+	@Override
+	public List<grupos> buscarPorUltimaModificacionBefore(LocalDate localDate) {
+		return grupoRepository.findByUltimaModificacionBefore(localDate.atTime(23,59,95));
+	}
+
+	@Override
+	public List<grupos> buscarPorUltimaModificacionBeetwen(LocalDate date1, LocalDate date2) {
+		return grupoRepository.findByUltimaModificacionBetween(date1.atTime(23,59,59),
+				date2.atTime(23,59,59));
+	}
 }

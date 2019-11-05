@@ -1,16 +1,9 @@
 package com.metrica.formacion.entity;
 
-import java.sql.Time;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Entity
@@ -31,12 +24,11 @@ public class grupos {
     @Column(name = "createdAT")
     private LocalDateTime createdAT;
 
-    @Column(name = "ultima_modificacion")
-    private LocalDateTime ultima_modificacion;
+    @Column(name = "ultimaModificacion")
+    private LocalDateTime ultimaModificacion;
 
     public grupos(){
 
-    	createdAT = LocalDateTime.now();
 	}
 
 	public int getId() {
@@ -77,19 +69,17 @@ public class grupos {
 		return createdAT;
 	}
 
-	public void setCreatedAT(LocalDateTime createdAT) {
-		this.createdAT = createdAT;
+	@PrePersist
+	public void setCreatedAT() {
+		this.createdAT = LocalDateTime.now();
 	}
 
-	public LocalDateTime getUltima_modificacion() {
-		return ultima_modificacion;
+	public LocalDateTime getUltimaModificacion() {
+		return ultimaModificacion;
 	}
 
-	public void setUltima_modificacion() {
-		this.ultima_modificacion = LocalDateTime.now();
-	}
-
-	public void setUltima_modificacion(LocalDateTime ultima_modificacion) {
-		this.ultima_modificacion = ultima_modificacion;
+	@PreUpdate
+	public void setUltimaModificacion(LocalDateTime ultimaModificacion) {
+		this.ultimaModificacion = ultimaModificacion;
 	}
 }

@@ -1,31 +1,43 @@
 package com.metrica.formacion.service;
 
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import com.metrica.formacion.entity.grupos;
-import com.metrica.formacion.entity.GrupoDTO;
+import jdk.vm.ci.meta.Local;
 
 public interface GrupoInterface {
 	
-	public List<GrupoDTO> getAll();
+	List<grupos> getAll();
 	
-	public GrupoDTO getById(int id);
-	
-	public GrupoDTO getByNombre (Time nombre);
-	
-	public boolean newGrupo (grupos actualizar);
+	grupos getById(int id);
 
-	public boolean updateGrupo (int id, grupos actualizar);
+	grupos getByNombre(LocalTime localTime);
 
-	public boolean sacarDeGrupo (int id); 
+	grupos guardarGrupo(grupos grupo);
 
-	public boolean meterEnGrupo (int id);
+	void borrarGrupo(int id);
 
-	public boolean moverDeGrupo (int idOriginal, int idActualizar);
-	
-	public List<GrupoDTO> getLibres ();
-	
-	public boolean deleteGrupo (int id);
-	
+	void borrarGrupo(grupos grupo);
+
+	/*BuscarPorFechas*/
+
+	//Ultima Modificacion
+
+	List<grupos> buscarPorUltimaModificacion(LocalDate localDate);
+
+	List<grupos> buscarPorUltimaModificacionBefore(LocalDate localDate);
+
+	List<grupos> buscarPorUltimaModificacionBeetwen(LocalDate date1, LocalDate date2);
+
+	//CreatedAT
+
+	List<grupos> buscarPorCreatedAT(LocalDate localDate);
+
+	List<grupos> buscarPorCreatedATBefore(LocalDate localDate);
+
+	List<grupos> buscarPorCreatedATBeetwen(LocalDate date1, LocalDate date2);
+
 }
