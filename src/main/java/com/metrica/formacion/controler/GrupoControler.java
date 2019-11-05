@@ -1,6 +1,5 @@
 package com.metrica.formacion.controler;
 
-import java.sql.Time;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -9,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
-import com.metrica.formacion.service.GrupoService;
+import com.metrica.formacion.service.GrupoServiceImple;
 
 
 @CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST , RequestMethod.PUT, RequestMethod.DELETE })
@@ -18,7 +17,7 @@ import com.metrica.formacion.service.GrupoService;
 public class GrupoControler {
 	
 	@Autowired
-	private GrupoService grupoService;
+	private GrupoServiceImple grupoService;
 
 	/*GET*/
 

@@ -1,4 +1,4 @@
-package com.metrica.formacion.config;
+package com.metrica.formacion;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -10,7 +10,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories("com.metrica.formacion")
 @ComponentScan("com.metrica.formacion")
 @EntityScan("com.metrica.formacion")
-@EnableDiscoveryClient
 public class SpringConfigurationFile {
 
 }

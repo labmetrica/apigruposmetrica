@@ -12,8 +12,6 @@ public interface GrupoRepository extends JpaRepository<grupos, Integer>  {
 
 	grupos findByNombre(LocalTime time1);
 
-	List<grupos> findByCreatedAT();
-
 	/*Buscar por fechas*/
 
 	//CreatedAT

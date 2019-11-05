@@ -3,90 +3,38 @@ package com.metrica.formacion.service;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.metrica.formacion.dao.GrupoRepository;
 import com.metrica.formacion.entity.grupos;
 
+public interface GrupoService {
+	
+	List<grupos> getAll();
+	
+	grupos getById(int id);
 
-@Service
-public class GrupoService implements GrupoInterface {
+	grupos getByNombre(LocalTime localTime);
 
-	@Autowired
-	private GrupoRepository grupoRepository;
+	grupos guardarGrupo(grupos grupo);
 
+	void borrarGrupo(int id);
 
-	@Override
-	public List<grupos> getAll() {
-		return grupoRepository.findAll();
-	}
+	void borrarGrupo(grupos grupo);
 
-	@Override
-	public grupos getById(int id) {
+	/*BuscarPorFechas*/
 
-		if(grupoRepository.existsById(id)){
+	//Ultima Modificacion
 
-			return grupoRepository.findById(id).get();
-		}
+	List<grupos> buscarPorUltimaModificacion(LocalDate localDate);
 
-		return null;
-	}
+	List<grupos> buscarPorUltimaModificacionBefore(LocalDate localDate);
 
-	@Override
-	public grupos getByNombre(LocalTime localTime) {
-		return grupoRepository.findByNombre(localTime);
-	}
+	List<grupos> buscarPorUltimaModificacionBeetwen(LocalDate date1, LocalDate date2);
 
-	@Override
-	public grupos guardarGrupo(grupos grupo) {
-		return grupoRepository.save(grupo);
-	}
+	//CreatedAT
 
-	@Override
-	public void borrarGrupo(int id) {
-		grupoRepository.deleteById(id);
-	}
+	List<grupos> buscarPorCreatedAT(LocalDate localDate);
 
-	@Override
-	public void borrarGrupo(grupos grupo) {
-		grupoRepository.delete(grupo);
-	}
+	List<grupos> buscarPorCreatedATBefore(LocalDate localDate);
 
-	/*Busqueda por fechas*/
+	List<grupos> buscarPorCreatedATBeetwen(LocalDate date1, LocalDate date2);
 
-	@Override
-	public List<grupos> buscarPorCreatedAT(LocalDate localDate) {
-		return grupoRepository.findByCreatedAT(localDate.toString());
-	}
-
-	@Override
-	public List<grupos> buscarPorCreatedATBefore(LocalDate localDate) {
-		return grupoRepository.findByCreatedATBefore(localDate.atTime(23,59,59));
-	}
-
-	@Override
-	public List<grupos> buscarPorCreatedATBeetwen(LocalDate date1, LocalDate date2) {
-		return grupoRepository.findByCreatedATBetween(date1.atTime(23,59,59)
-		, date2.atTime(23,59,59));
-	}
-
-	//
-
-
-	@Override
-	public List<grupos> buscarPorUltimaModificacion(LocalDate localDate) {
-		return grupoRepository.findByUltimaModificacion(localDate.toString());
-	}
-
-	@Override
-	public List<grupos> buscarPorUltimaModificacionBefore(LocalDate localDate) {
-		return grupoRepository.findByUltimaModificacionBefore(localDate.atTime(23,59,95));
-	}
-
-	@Override
-	public List<grupos> buscarPorUltimaModificacionBeetwen(LocalDate date1, LocalDate date2) {
-		return grupoRepository.findByUltimaModificacionBetween(date1.atTime(23,59,59),
-				date2.atTime(23,59,59));
-	}
 }

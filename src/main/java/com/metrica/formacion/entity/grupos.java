@@ -18,13 +18,13 @@ public class grupos {
 	@Column(name = "nombre", nullable = false)
 	private LocalTime nombre;
 	
-	@Column(name = "Huecos_Libres")
+	@Column(name = "Huecos")
 	private int huecos;
 
     @Column(name = "createdAT")
     private LocalDateTime createdAT;
 
-    @Column(name = "ultimaModificacion")
+    @Column(name = "ultima_modificacion")
     private LocalDateTime ultimaModificacion;
 
     public grupos(){
@@ -79,7 +79,7 @@ public class grupos {
 	}
 
 	@PreUpdate
-	public void setUltimaModificacion(LocalDateTime ultimaModificacion) {
-		this.ultimaModificacion = ultimaModificacion;
+	public void setUltimaModificacion() {
+		this.ultimaModificacion = LocalDateTime.now();
 	}
 }
