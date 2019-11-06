@@ -30,28 +30,28 @@ public class GrupoControler {
         return grupoService.getByNombre(nombre);
     }
 
-    @GetMapping("/grupos")
+    @GetMapping("/lista_grupos")
     public List<grupos> getAll() {
         return grupoService.getAll();
     }
 
     /*Delete*/
 
-    @DeleteMapping("/grupo/{id}")
+    @DeleteMapping("/borrarPorId/{id}")
     public void deleteGrupo(@PathVariable("id") final int id) {
         grupoService.borrarGrupo(id);
     }
 
     /*POST*/
 
-    @PostMapping("/grupo/nuevo")
+    @PostMapping("/crearGrupo")
     public grupos newGrupo(final @RequestBody grupos actualizar) {
         return grupoService.guardarGrupo(actualizar);
     }
 
     /*PUT*/
 
-    @PutMapping("/grupo/actualizar/{id}")
+    @PutMapping("/actualizar/{id}")
     public grupos updateGrupo(@PathVariable("id") final @RequestBody grupos actualizar) {
         return grupoService.guardarGrupo(actualizar);
     }
