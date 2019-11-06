@@ -57,8 +57,8 @@ public class GrupoController {
 
     /*PUT*/
 
-    @PutMapping("/actualizar/{id}")
-    public grupos updateGrupo(@PathVariable("id") final @RequestBody grupos actualizar) {
+    @PutMapping("/actualizarGrupo")
+    public grupos updateGrupo(@RequestBody grupos actualizar) {
         return grupoService.guardarGrupo(actualizar);
     }
 }
