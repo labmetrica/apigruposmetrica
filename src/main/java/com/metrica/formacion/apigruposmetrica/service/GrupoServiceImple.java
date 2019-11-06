@@ -54,6 +54,12 @@ public class GrupoServiceImple implements GrupoService {
         grupoRepository.delete(grupo);
     }
 
+    @Override
+    public void borrarTodo() {
+
+        grupoRepository.deleteAll();
+    }
+
     /*Busqueda por fechas*/
 
     @Override
