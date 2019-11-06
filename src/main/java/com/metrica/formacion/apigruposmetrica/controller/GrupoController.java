@@ -30,7 +30,7 @@ public class GrupoController {
         return grupoService.getByNombre(nombre);
     }
 
-    @GetMapping("/lista_grupos")
+    @GetMapping("/lista-grupos")
     public List<grupos> getAll() {
         return grupoService.getAll();
     }
