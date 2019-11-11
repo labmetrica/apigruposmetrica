@@ -3,11 +3,8 @@ package com.metrica.formacion.apigruposmetrica.service;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-
-import jdk.vm.ci.meta.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.metrica.formacion.apigruposmetrica.dao.GrupoRepository;
 import com.metrica.formacion.apigruposmetrica.entity.grupos;
 import com.metrica.formacion.apigruposmetrica.excepciones.BorrarGrupoNotFoundException;
