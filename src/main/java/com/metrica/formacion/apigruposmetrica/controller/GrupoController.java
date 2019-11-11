@@ -2,6 +2,7 @@ package com.metrica.formacion.apigruposmetrica.controller;
 
 import com.metrica.formacion.apigruposmetrica.entity.grupos;
 import com.metrica.formacion.apigruposmetrica.service.GrupoServiceImple;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalTime;
 import java.util.List;
 
+@Log4j2
 @RestController
 @RequestMapping("/grupos")
 public class GrupoController {
@@ -22,6 +24,7 @@ public class GrupoController {
 
     @GetMapping("/buscarPorId/{id}")
     public grupos getById(@PathVariable("id") final int id) {
+        log.info("buscando grupo, id : " + id);
         return grupoService.getById(id);
     }
 
@@ -32,7 +35,7 @@ public class GrupoController {
 
     @GetMapping("/lista-grupos")
     public ResponseEntity<List<grupos>> getAll() {
-
+        log.info("mostrando lista de grupos");
         return new ResponseEntity<List<grupos>>(grupoService.getAll(), HttpStatus.OK);
     }
 
