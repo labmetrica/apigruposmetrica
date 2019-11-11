@@ -4,13 +4,13 @@ import com.metrica.formacion.apigruposmetrica.entity.grupos;
 import com.metrica.formacion.apigruposmetrica.service.GrupoServiceImple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalTime;
 import java.util.List;
 
-
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @RestController
 @RequestMapping("/grupos")
 public class GrupoController {
@@ -31,8 +31,9 @@ public class GrupoController {
     }
 
     @GetMapping("/lista-grupos")
-    public List<grupos> getAll() {
-        return grupoService.getAll();
+    public ResponseEntity<List<grupos>> getAll() {
+
+        return new ResponseEntity<List<grupos>>(grupoService.getAll(), HttpStatus.OK);
     }
 
     /*Delete*/
