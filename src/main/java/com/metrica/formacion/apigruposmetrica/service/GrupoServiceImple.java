@@ -10,7 +10,7 @@ import com.metrica.formacion.apigruposmetrica.entity.grupos;
 
 @Service
 public class GrupoServiceImple implements GrupoService {
-  
+
 	@Autowired
 	private GrupoRepository grupoRepository;
 
