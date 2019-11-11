@@ -20,7 +20,7 @@ public class GrupoController {
 
     /*GET*/
 
-    @GetMapping("/buscarPorID/{id}")
+    @GetMapping("/buscarPorId/{id}")
     public grupos getById(@PathVariable("id") final int id) {
         return grupoService.getById(id);
     }
