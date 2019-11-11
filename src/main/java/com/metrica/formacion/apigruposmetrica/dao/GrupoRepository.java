@@ -32,6 +32,4 @@ public interface GrupoRepository extends JpaRepository<grupos, Integer> {
 	List<grupos> findByUltimaModificacionBefore(LocalDateTime localDateTime);
 
 	List<grupos> findByUltimaModificacionBetween(LocalDateTime fecha1, LocalDateTime fecha2);
-
-	boolean exists(LocalTime nombre);
 }

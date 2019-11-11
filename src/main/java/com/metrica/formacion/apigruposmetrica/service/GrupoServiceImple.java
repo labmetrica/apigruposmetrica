@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
+import jdk.vm.ci.meta.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,7 +61,7 @@ public class GrupoServiceImple implements GrupoService {
 
 	@Override
 	public grupos guardarGrupo(grupos grupo) {
-		if (grupoRepository.existsById(grupo.getId()) || grupoRepository.exists(grupo.getNombre())) {
+		if (grupoRepository.existsById(grupo.getId())) {
 			throw new GrupoIdNotFoundException(grupo);
 		} else {
 			return grupoRepository.save(grupo);
