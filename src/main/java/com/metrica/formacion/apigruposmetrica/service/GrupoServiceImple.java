@@ -85,7 +85,12 @@ public class GrupoServiceImple implements GrupoService {
 		}
 	}
 
-	/* Busqueda por fechas */
+    @Override
+    public void borrarTodo() {
+        grupoRepository.deleteAll();
+    }
+
+    /* Busqueda por fechas */
 
 	@Override
 	public List<grupos> buscarPorCreatedAT(LocalDate localdate) {
