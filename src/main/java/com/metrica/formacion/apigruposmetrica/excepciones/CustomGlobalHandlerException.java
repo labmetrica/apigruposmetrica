@@ -14,7 +14,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @EnableWebMvc
 public class CustomGlobalHandlerException extends ResponseEntityExceptionHandler {
 	@ExceptionHandler(BuscarIdNotFoundException.class)
-	public ResponseEntity<CustomErrorResponse> springHandleNotFound(final Exception ex) throws IOException {
+	public ResponseEntity<CustomErrorResponse> springHandleNotFound(final BuscarIdNotFoundException ex)
+			throws IOException {
 		final CustomErrorResponse errors = new CustomErrorResponse();
 		errors.setTimestamp(LocalDateTime.now());
 		errors.setError(ex.getMessage());
@@ -24,7 +25,8 @@ public class CustomGlobalHandlerException extends ResponseEntityExceptionHandler
 	}
 
 	@ExceptionHandler(ListarUsuariosNotFoundException.class)
-	public ResponseEntity<CustomErrorResponse> springHandleAllNotFound(final Exception ex) throws IOException {
+	public ResponseEntity<CustomErrorResponse> springHandleAllNotFound(final ListarUsuariosNotFoundException ex)
+			throws IOException {
 		final CustomErrorResponse errors = new CustomErrorResponse();
 		errors.setTimestamp(LocalDateTime.now());
 		errors.setError(ex.getMessage());
@@ -34,7 +36,8 @@ public class CustomGlobalHandlerException extends ResponseEntityExceptionHandler
 	}
 
 	@ExceptionHandler(BuscarFechaNotFoundException.class)
-	public ResponseEntity<CustomErrorResponse> springHandleFechaNotFound(final Exception ex) throws IOException {
+	public ResponseEntity<CustomErrorResponse> springHandleFechaNotFound(final BuscarFechaNotFoundException ex)
+			throws IOException {
 		final CustomErrorResponse errors = new CustomErrorResponse();
 		errors.setTimestamp(LocalDateTime.now());
 		errors.setError(ex.getMessage());
@@ -44,7 +47,8 @@ public class CustomGlobalHandlerException extends ResponseEntityExceptionHandler
 	}
 
 	@ExceptionHandler(BuscarFechaAntesNotFoundException.class)
-	public ResponseEntity<CustomErrorResponse> springHandleFechaAntesNotFound(final Exception ex) throws IOException {
+	public ResponseEntity<CustomErrorResponse> springHandleFechaAntesNotFound(
+			final BuscarFechaAntesNotFoundException ex) throws IOException {
 		final CustomErrorResponse errors = new CustomErrorResponse();
 		errors.setTimestamp(LocalDateTime.now());
 		errors.setError(ex.getMessage());
@@ -54,7 +58,8 @@ public class CustomGlobalHandlerException extends ResponseEntityExceptionHandler
 	}
 
 	@ExceptionHandler(BuscarFechaEntreNotFoundException.class)
-	public ResponseEntity<CustomErrorResponse> springHandleFechaEntreNotFound(final Exception ex) throws IOException {
+	public ResponseEntity<CustomErrorResponse> springHandleFechaEntreNotFound(
+			final BuscarFechaEntreNotFoundException ex) throws IOException {
 		final CustomErrorResponse errors = new CustomErrorResponse();
 		errors.setTimestamp(LocalDateTime.now());
 		errors.setError(ex.getMessage());
@@ -64,7 +69,8 @@ public class CustomGlobalHandlerException extends ResponseEntityExceptionHandler
 	}
 
 	@ExceptionHandler(BuscarModificacionNotFoundException.class)
-	public ResponseEntity<CustomErrorResponse> springHandleModificacionNotFound(final Exception ex) throws IOException {
+	public ResponseEntity<CustomErrorResponse> springHandleModificacionNotFound(
+			final BuscarModificacionNotFoundException ex) throws IOException {
 		final CustomErrorResponse errors = new CustomErrorResponse();
 		errors.setTimestamp(LocalDateTime.now());
 		errors.setError(ex.getMessage());
@@ -74,8 +80,8 @@ public class CustomGlobalHandlerException extends ResponseEntityExceptionHandler
 	}
 
 	@ExceptionHandler(BuscarModificacionAntesNotFoundException.class)
-	public ResponseEntity<CustomErrorResponse> springHandleModificacionAntesNotFound(final Exception ex)
-			throws IOException {
+	public ResponseEntity<CustomErrorResponse> springHandleModificacionAntesNotFound(
+			final BuscarModificacionAntesNotFoundException ex) throws IOException {
 		final CustomErrorResponse errors = new CustomErrorResponse();
 		errors.setTimestamp(LocalDateTime.now());
 		errors.setError(ex.getMessage());
@@ -85,8 +91,8 @@ public class CustomGlobalHandlerException extends ResponseEntityExceptionHandler
 	}
 
 	@ExceptionHandler(BuscarModificacionEntreNotFoundException.class)
-	public ResponseEntity<CustomErrorResponse> springHandleModificacionEntreNotFound(final Exception ex)
-			throws IOException {
+	public ResponseEntity<CustomErrorResponse> springHandleModificacionEntreNotFound(
+			final BuscarModificacionEntreNotFoundException ex) throws IOException {
 		final CustomErrorResponse errors = new CustomErrorResponse();
 		errors.setTimestamp(LocalDateTime.now());
 		errors.setError(ex.getMessage());
@@ -96,7 +102,8 @@ public class CustomGlobalHandlerException extends ResponseEntityExceptionHandler
 	}
 
 	@ExceptionHandler(GrupoIdNotFoundException.class)
-	public ResponseEntity<CustomErrorResponse> springHandleGrupoSaveNotFound(final Exception ex) throws IOException {
+	public ResponseEntity<CustomErrorResponse> springHandleGrupoSaveNotFound(final GrupoIdNotFoundException ex)
+			throws IOException {
 		final CustomErrorResponse errors = new CustomErrorResponse();
 		errors.setTimestamp(LocalDateTime.now());
 		errors.setError(ex.getMessage());
@@ -106,7 +113,8 @@ public class CustomGlobalHandlerException extends ResponseEntityExceptionHandler
 	}
 
 	@ExceptionHandler(BorrarIdNotFoundException.class)
-	public ResponseEntity<CustomErrorResponse> springHandleBorrarIdNotFound(final Exception ex) throws IOException {
+	public ResponseEntity<CustomErrorResponse> springHandleBorrarIdNotFound(final BorrarIdNotFoundException ex)
+			throws IOException {
 		final CustomErrorResponse errors = new CustomErrorResponse();
 		errors.setTimestamp(LocalDateTime.now());
 		errors.setError(ex.getMessage());
@@ -116,7 +124,8 @@ public class CustomGlobalHandlerException extends ResponseEntityExceptionHandler
 	}
 
 	@ExceptionHandler(BorrarGrupoNotFoundException.class)
-	public ResponseEntity<CustomErrorResponse> springHandleBorrarGrupoNotFound(final Exception ex) throws IOException {
+	public ResponseEntity<CustomErrorResponse> springHandleBorrarGrupoNotFound(final BorrarGrupoNotFoundException ex)
+			throws IOException {
 		final CustomErrorResponse errors = new CustomErrorResponse();
 		errors.setTimestamp(LocalDateTime.now());
 		errors.setError(ex.getMessage());
