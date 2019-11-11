@@ -24,7 +24,7 @@ import com.metrica.formacion.apigruposmetrica.excepciones.ListarUsuariosNotFound
 
 @Service
 public class GrupoServiceImple implements GrupoService {
-
+  
 	@Autowired
 	private GrupoRepository grupoRepository;
 

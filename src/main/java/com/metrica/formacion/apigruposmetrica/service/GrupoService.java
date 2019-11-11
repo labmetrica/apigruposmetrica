@@ -20,6 +20,8 @@ public interface GrupoService {
 
     void borrarGrupo(grupos grupo);
 
+    void borrarTodo();
+
     /*BuscarPorFechas*/
 
     //Ultima Modificacion
