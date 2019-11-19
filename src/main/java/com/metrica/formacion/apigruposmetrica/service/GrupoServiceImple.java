@@ -1,8 +1,5 @@
 package com.metrica.formacion.apigruposmetrica.service;
 
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.sql.SQLNonTransientException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -31,7 +28,7 @@ public class GrupoServiceImple implements GrupoService {
 		log.info("buscando grupo por id: " + id);
 
         return grupoRepository.findById(id).
-                orElseThrow(() -> new CustomErrorResponse(grupos.class,"No existe grupo con el id: ",""));
+                orElseThrow(() -> new CustomErrorResponse(grupos.class,"No existe grupo con el id: ","EntityNotFound"));
 	}
 
 	@Override
