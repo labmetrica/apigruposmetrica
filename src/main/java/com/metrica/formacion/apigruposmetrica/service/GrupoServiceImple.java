@@ -3,11 +3,14 @@ package com.metrica.formacion.apigruposmetrica.service;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.metrica.formacion.apigruposmetrica.dao.GrupoRepository;
 import com.metrica.formacion.apigruposmetrica.entity.grupos;
+import com.metrica.formacion.apigruposmetrica.exceptionHandler.*;
 
+@Log4j2
 @Service
 public class GrupoServiceImple implements GrupoService {
 
@@ -21,18 +24,48 @@ public class GrupoServiceImple implements GrupoService {
 
 	@Override
 	public grupos getById(int id) {
-		return grupoRepository.findById(id).get();
+
+		log.info("buscando grupo por id: " + id);
+
+        return grupoRepository.findById(id).
+                orElseThrow(() -> new CustomErrorResponse(grupos.class,"No existe grupo con el id: ","EntityNotFound"));
 	}
 
 	@Override
 	public grupos getByNombre(LocalTime localTime) {
-		return grupoRepository.findByNombre(localTime);
+
+		log.info("buscando grupo por nombre: " + localTime.toString());
+		grupos grupo;
+
+		try {
+
+			grupo = grupoRepository.findByNombre(localTime);
+		} catch (Exception e) {
+
+		    throw new CustomErrorResponse(grupos.class,"No existe grupo " ,e.getMessage());
+		}
+
+		return grupo;
 	}
 
 	@Override
 	public grupos guardarGrupo(grupos grupo) {
-		return grupoRepository.save(grupo);
+
+		grupos response;
+
+		if((grupo.getHuecos() > 12) || (grupo.getHuecos() < 0)){
+
+			throw new CustomErrorResponse(grupos.class,"los grupos no pueden tener más de 12 huecos, minimo 0","fuera de limites");
+		}
+		else{
+
+			response = grupoRepository.save(grupo);
+		}
+
+		return response;
 	}
+
+	//borrar
 
 	@Override
 	public void borrarGrupo(int id) {
@@ -52,6 +85,8 @@ public class GrupoServiceImple implements GrupoService {
 
     /* Busqueda por fechas */
 
+	//createdAT
+
 	@Override
 	public List<grupos> buscarPorCreatedAT(LocalDate localdate) {
 		return grupoRepository.findByCreatedAT(localdate.toString());
@@ -68,7 +103,7 @@ public class GrupoServiceImple implements GrupoService {
 
 	}
 
-	//
+	//Ultima modificacion
 
 	@Override
 	public List<grupos> buscarPorUltimaModificacion(LocalDate localdate) {
