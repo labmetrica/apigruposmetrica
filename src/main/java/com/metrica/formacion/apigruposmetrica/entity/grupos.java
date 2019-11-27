@@ -78,9 +78,7 @@ public class grupos {
 	@PrePersist
 	public void setCreatedAT() {
 
-		if(createdAT == null){
-			this.createdAT = LocalDateTime.now();
-		}
+		this.createdAT = LocalDateTime.now();
 	}
 
 	public LocalDateTime getUltimaModificacion() {

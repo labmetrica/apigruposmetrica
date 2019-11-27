@@ -41,7 +41,7 @@ public class GrupoController {
 
     /*Delete*/
 
-    @DeleteMapping("/borrarPorId/{id}")
+    @DeleteMapping("/borrarGrupo/{id}")
     public void deleteGrupo(@PathVariable("id") final int id) {
         grupoService.borrarGrupo(id);
     }
