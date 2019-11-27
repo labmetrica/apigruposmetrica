@@ -34,9 +34,9 @@ public class GrupoController {
     }
 
     @GetMapping("/lista-grupos")
-    public ResponseEntity<List<grupos>> getAll() {
+    public List<grupos> getAll() {
         log.info("mostrando lista de grupos");
-        return new ResponseEntity<List<grupos>>(grupoService.getAll(), HttpStatus.OK);
+        return grupoService.getAll();
     }
 
     /*Delete*/
