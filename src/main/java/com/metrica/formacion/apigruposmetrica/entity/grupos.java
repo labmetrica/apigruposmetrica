@@ -25,7 +25,7 @@ public class grupos {
 	private LocalTime nombre;
 
 	@Column(name = "Huecos")
-	private int huecos;
+	private int huecos = 12;
 
 	@Column(name = "createdAT")
 	private LocalDateTime createdAT;
@@ -77,6 +77,7 @@ public class grupos {
 
 	@PrePersist
 	public void setCreatedAT() {
+
 		this.createdAT = LocalDateTime.now();
 	}
 
